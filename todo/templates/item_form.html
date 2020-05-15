@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>I need to do this...</h1>
+
+    <form method="POST">
+        
+        <!--The {% csrf_token %} prevents cross-site scripting attacks.-->
+        {% csrf_token %}
+
+        <!--The .as_p method renders the form's elements as block level 
+        elements, as opposed to inline elements.-->
+        {{ form.as_p }}
+
+        <button type="submit">Save:</button>
+    
+    </form>
+
+</body>
+</html>
