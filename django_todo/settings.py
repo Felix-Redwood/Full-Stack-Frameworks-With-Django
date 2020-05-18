@@ -16,10 +16,15 @@ WHEN RUNNING THE PROGRAM, ENSURE YOU TYPE THE FOLLOWING LINE:
 import os
 import dj_database_url
 
+from os import path
+
 if os.environ.get('DEVELOPMENT'):
     development = True
 else:
     development = False
+
+if path.exists('env.py'):
+    import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,14 +34,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-def import_secret_key():
-    if os.path.exists("env.py"):
-        import env
-        SECRET_KEY = env.SECRET_KEY
-    else:
-        SECRET_KEY = os.environ.get('SECRET_KEY')
-
-import_secret_key()
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
